@@ -2,11 +2,28 @@ import XCTest
 @testable import AudioPlaylist
 
 final class AudioPlaylistTests: XCTestCase {
-    func testExample() throws {
-        // XCTest Documentation
-        // https://developer.apple.com/documentation/xctest
+    
+    // Mock data
+    let playlist = AudioPlaylistModel(title: "The Indian bliss", coverImageURL: "https://sampleImage.com", auidoURL: "https://sampleAduioUrl.com/audio.mp3")
 
-        // Defining Test Cases and Test Methods
-        // https://developer.apple.com/documentation/xctest/defining_test_cases_and_test_methods
+    func testModelObjectNonNil() {
+        XCTAssertNotNil(playlist)
+    }
+    
+    func testTitle() {
+        XCTAssertTrue(playlist.hasValidTitle())
+    }
+    
+    func testValidThumbail() {
+        XCTAssertTrue(playlist.hasValidThumbnailURL())
+    }
+    
+    func testValidAudio() {
+        XCTAssertTrue(playlist.hasValidAudioURL())
+    }
+    
+    func testOptimisedTitle() {
+        let maxCharactersOftitle = 200
+        XCTAssertLessThan(playlist.title.count, maxCharactersOftitle)
     }
 }
