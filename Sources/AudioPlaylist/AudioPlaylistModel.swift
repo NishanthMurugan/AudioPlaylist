@@ -13,6 +13,12 @@ public struct AudioPlaylistModel: Identifiable {
     public let coverImageURL: String
     public let auidoURL: String
     
+    public init(title: String, coverImageURL: String, auidoURL: String) {
+        self.title = title
+        self.coverImageURL = coverImageURL
+        self.auidoURL = auidoURL
+    }
+    
     /// Ensure the url is valid to load thumbnail
     func hasValidThumbnailURL() -> Bool {
         return !coverImageURL.isEmpty && coverImageURL.hasPrefix("https://")

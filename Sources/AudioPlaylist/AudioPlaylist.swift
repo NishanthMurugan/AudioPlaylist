@@ -9,8 +9,13 @@ import SwiftUI
 /// This view is added with Tableview which dipslay thumbnail and title
 public struct AudioPlaylist: View {
     
-    /// Pass the audioplaylist model
-    @State public var playlists: [AudioPlaylistModel] = []
+    /// Bind the audioplaylist model and use @state on intergration
+    @Binding public var playlists: [AudioPlaylistModel]
+    
+    /// Pass @state / @published object using $variable
+    public init(playlists: Binding<[AudioPlaylistModel]>) {
+        self._playlists = playlists
+    }
     
     public var body: some View {
       List {
@@ -28,9 +33,3 @@ public struct AudioPlaylist: View {
       .navigationBarItems(trailing: EditButton())
     }
   }
-
-struct PlaylistTableView_Previews: PreviewProvider {
-    static var previews: some View {
-        AudioPlaylist()
-    }
-}
